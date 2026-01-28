@@ -1,0 +1,8 @@
+# Global ignores
+node_modules/
+target/
+.env
+
+# IDE / OS
+.vscode/
+.DS_Store
