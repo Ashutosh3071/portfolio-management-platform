@@ -1,5 +1,7 @@
 package com.portfolio.backend.entity;
 
+import java.util.Set;
+import java.util.HashSet;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +16,14 @@ public class Project {
     private String description;
     private String techStack;
     private String clientName;
+
+    @ManyToMany
+    @JoinTable(
+        name = "project_skills",
+        joinColumns = @JoinColumn(name = "project_id"),
+        inverseJoinColumns = @JoinColumn(name = "skill_id")
+    )
+    private Set<Skill> skills = new HashSet<>();
 
     public Project() {}
 
@@ -37,4 +47,12 @@ public class Project {
 
     public String getClientName() { return clientName; }
     public void setClientName(String clientName) { this.clientName = clientName; }
+
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
 }

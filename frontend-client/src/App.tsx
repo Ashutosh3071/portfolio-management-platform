@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import AdminSkillsPage from "./pages/AdminSkillsPage";
+import ClientSkillsPage from "./pages/ClientSkillsPage";
+import Navbar from "./components/common/Navbar";
 
 function App() {
+  const [role, setRole] = useState<"admin" | "client">("client");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Navbar />
+
+      <div className="flex justify-center mt-4 gap-4">
+        <button
+          onClick={() => setRole("admin")}
+          className="px-4 py-1 bg-green-600 text-white rounded"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Admin View
+        </button>
+
+        <button
+          onClick={() => setRole("client")}
+          className="px-4 py-1 bg-blue-600 text-white rounded"
+        >
+          Client View
+        </button>
+      </div>
+
+      {role === "admin" ? <AdminSkillsPage /> : <ClientSkillsPage />}
+    </>
   );
 }
 
