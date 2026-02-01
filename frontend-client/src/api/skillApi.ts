@@ -1,9 +1,7 @@
-import axios from "axios";
+import axiosInstance from "./axiosInstance";
 import { Skill } from "../models/Skill";
 
-const API_URL = "http://localhost:8080/api/skills";
-
 export const getAllSkills = async (): Promise<Skill[]> => {
-  const response = await axios.get<Skill[]>(API_URL);
+  const response = await axiosInstance.get<Skill[]>("/api/skills");
   return response.data;
 };

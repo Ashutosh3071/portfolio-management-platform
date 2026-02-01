@@ -1,32 +1,35 @@
 import { useState } from "react";
-import AdminSkillsPage from "./pages/AdminSkillsPage";
-import ClientSkillsPage from "./pages/ClientSkillsPage";
+import LoginPage from "./pages/LoginPage";
+import SkillsDashboard from "./components/skills/SkillsDashboard";
 import Navbar from "./components/common/Navbar";
 
 function App() {
-  const [role, setRole] = useState<"admin" | "client">("client");
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem("token")
+  );
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+  };
+
+  if (!isAuthenticated) {
+    return <LoginPage onLogin={() => setIsAuthenticated(true)} />;
+  }
 
   return (
     <>
       <Navbar />
-
-      <div className="flex justify-center mt-4 gap-4">
+      <div className="flex justify-center mt-4">
         <button
-          onClick={() => setRole("admin")}
-          className="px-4 py-1 bg-green-600 text-white rounded"
+          onClick={logout}
+          className="bg-red-600 text-white px-3 py-1 rounded"
         >
-          Admin View
-        </button>
-
-        <button
-          onClick={() => setRole("client")}
-          className="px-4 py-1 bg-blue-600 text-white rounded"
-        >
-          Client View
+          Logout
         </button>
       </div>
 
-      {role === "admin" ? <AdminSkillsPage /> : <ClientSkillsPage />}
+      <SkillsDashboard />
     </>
   );
 }
