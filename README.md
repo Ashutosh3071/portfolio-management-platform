@@ -1,15 +1,16 @@
-# Personal Portfolio & Management Platform
+# Portfolio Management Platform
 
-## Sprint 1 – Core Setup & Architecture
+Full-stack portfolio platform with admin management, analytics, and AI chat.
 
-### Tech Stack
-- Backend: Spring Boot, Java, JPA
-- Frontend Client: React + TypeScript
-- Frontend Admin: Angular
-- Database: MySQL / PostgreSQL
+## Tech Stack
+- Spring Boot
+- React + TypeScript
+- Angular (Admin)
+- MySQL
+- JWT Security
 
-### Status
-✔ Project structure created  
-✔ Backend runs successfully  
-✔ Client & Admin UI loads  
-✔ Git repository initialized
+## Features
+- Portfolio & skills dashboard
+- Live AI chat
+- Analytics dashboard
+- Secure role-based access

@@ -2,6 +2,8 @@ import { useState } from "react";
 import LoginPage from "./pages/LoginPage";
 import SkillsDashboard from "./components/skills/SkillsDashboard";
 import Navbar from "./components/common/Navbar";
+import ChatBox from "./components/chat/ChatBox";
+import AnalyticsDashboard from "./components/analytics/AnalyticsDashboard";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -30,6 +32,8 @@ function App() {
       </div>
 
       <SkillsDashboard />
+      <ChatBox />
+      <AnalyticsDashboard />
     </>
   );
 }
