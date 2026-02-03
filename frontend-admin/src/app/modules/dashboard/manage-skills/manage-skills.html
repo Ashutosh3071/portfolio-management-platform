@@ -1,0 +1,18 @@
+<h2>Manage Skills</h2>
+
+<table>
+  <tr>
+    <th>Skill</th>
+    <th>Proficiency</th>
+    <th>Action</th>
+  </tr>
+
+  <tr *ngFor="let skill of skills">
+    <td>{{ skill.name }}</td>
+    <td>{{ skill.level }}%</td>
+    <td>
+      <button>Edit</button>
+      <button class="danger">Delete</button>
+    </td>
+  </tr>
+</table>

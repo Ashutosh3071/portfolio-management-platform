@@ -1,1 +1,16 @@
-<p>admin-layout works!</p>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <h3>Admin Panel</h3>
+    <nav>
+      <a routerLink="/admin/dashboard">Dashboard</a>
+      <a routerLink="/admin/skills">Manage Skills</a>
+      <a routerLink="/admin/projects">Manage Projects</a>
+      <a routerLink="/admin/logs">System Logs</a>
+      <a routerLink="/admin/login">Logout</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

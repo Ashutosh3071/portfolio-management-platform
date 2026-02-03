@@ -32,8 +32,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/chat/**").permitAll()
                 .requestMatchers("/api/analytics/**").permitAll()
-                .requestMatchers("/api/skills/**").hasRole("ADMIN")
-                .requestMatchers("/api/projects/**").authenticated()
+                .requestMatchers("/api/skills/**").permitAll()
+                .requestMatchers("/api/projects/**").permitAll()
                 .anyRequest().authenticated()
             )
             .addFilterBefore(

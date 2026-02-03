@@ -1,21 +1,37 @@
-import React from "react";
-import { useTheme } from "../../context/ThemeContext";
+import { NavLink } from "react-router-dom";
 
-const Navbar: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
-
+const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center px-6 py-3
-                    bg-gray-200 dark:bg-gray-800
-                    text-black dark:text-white">
-      <h3 className="font-bold">Portfolio Management Platform</h3>
+    <nav className="bg-blue-600 text-white px-6 py-4">
+      <div className="max-w-6xl mx-auto flex justify-between items-center">
+        <h1 className="text-xl font-bold">My Portfolio</h1>
 
-      <button
-        onClick={toggleTheme}
-        className="px-3 py-1 rounded bg-blue-600 text-white"
-      >
-        {theme === "light" ? "Dark Mode" : "Light Mode"}
-      </button>
+        <div className="space-x-6">
+          <NavLink to="/" className="hover:underline">
+            Home
+          </NavLink>
+          <NavLink to="/about" className="hover:underline">
+            About
+          </NavLink>
+          <NavLink to="/skills" className="hover:underline">
+            Skills
+          </NavLink>
+          <NavLink to="/projects" className="hover:underline">
+            Projects
+          </NavLink>
+          <NavLink to="/contact" className="hover:underline">
+            Contact
+          </NavLink>
+          <NavLink to="/chat" className="hover:underline">
+  Chat
+</NavLink>
+
+<NavLink to="/analytics" className="hover:underline">
+  Analytics
+</NavLink>
+
+        </div>
+      </div>
     </nav>
   );
 };

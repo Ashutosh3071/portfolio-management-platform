@@ -1,40 +1,31 @@
-import { useState } from "react";
-import LoginPage from "./pages/LoginPage";
-import SkillsDashboard from "./components/skills/SkillsDashboard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/common/Navbar";
-import ChatBox from "./components/chat/ChatBox";
-import AnalyticsDashboard from "./components/analytics/AnalyticsDashboard";
+
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import SkillsPage from "./pages/SkillsPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import ContactPage from "./pages/ContactPage";import ChatPage from "./pages/ChatPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
+
+
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    !!localStorage.getItem("token")
-  );
-
-  const logout = () => {
-    localStorage.removeItem("token");
-    setIsAuthenticated(false);
-  };
-
-  if (!isAuthenticated) {
-    return <LoginPage onLogin={() => setIsAuthenticated(true)} />;
-  }
-
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={logout}
-          className="bg-red-600 text-white px-3 py-1 rounded"
-        >
-          Logout
-        </button>
-      </div>
 
-      <SkillsDashboard />
-      <ChatBox />
-      <AnalyticsDashboard />
-    </>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/skills" element={<SkillsPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/chat" element={<ChatPage />} />
+        <Route path="/analytics" element={<AnalyticsPage />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
