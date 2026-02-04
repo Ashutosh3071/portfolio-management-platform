@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './modules/auth/login/login.component';
+import { AdminAuthGuard } from './services/admin-auth.guard';
 import { AdminDashboardComponent } from './modules/dashboard/admin-dashboard/admin-dashboard';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout';
 import { ManageSkillsComponent } from './modules/dashboard/manage-skills/manage-skills';
@@ -13,6 +14,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [AdminAuthGuard],
     children: [
       { path: 'dashboard', component: AdminDashboardComponent },
       { path: 'skills', component: ManageSkillsComponent },

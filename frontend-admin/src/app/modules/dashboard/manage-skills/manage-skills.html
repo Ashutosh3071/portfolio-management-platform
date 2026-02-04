@@ -1,18 +1,28 @@
 <h2>Manage Skills</h2>
 
+<div class="form">
+  <input placeholder="Skill name" [(ngModel)]="newSkill.name" />
+  <input type="number" placeholder="Proficiency" [(ngModel)]="newSkill.proficiency" />
+  <input placeholder="Category" [(ngModel)]="newSkill.category" />
+  <button (click)="addSkill()">Add</button>
+</div>
+
 <table>
   <tr>
-    <th>Skill</th>
+    <th>Name</th>
     <th>Proficiency</th>
+    <th>Category</th>
     <th>Action</th>
   </tr>
 
   <tr *ngFor="let skill of skills">
     <td>{{ skill.name }}</td>
-    <td>{{ skill.level }}%</td>
+    <td>{{ skill.proficiency }}%</td>
+    <td>{{ skill.category }}</td>
     <td>
-      <button>Edit</button>
-      <button class="danger">Delete</button>
+      <button class="danger" (click)="deleteSkill(skill.id!)">
+        Delete
+      </button>
     </td>
   </tr>
 </table>
