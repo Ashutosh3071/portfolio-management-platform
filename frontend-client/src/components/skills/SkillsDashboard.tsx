@@ -1,76 +1,58 @@
-import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
-import { getAllSkills } from "../../api/skillApi";
-import { Skill } from "../../models/Skill";
+import { useEffect, useState } from "react";
+import { Skill } from "../../types/Skill";
+import SkillCard from "./SkillCard";
+import SectionTitle from "../common/SectionTitle";
+import { getAllSkills } from "../../api/skillsApi";
+import { motion } from "framer-motion";
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Tooltip,
-  Legend,
-} from "chart.js";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Tooltip,
-  Legend
-);
-
-const SkillsDashboard: React.FC = () => {
+const SkillsDashboard = () => {
   const [skills, setSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getAllSkills()
-      .then((data) => setSkills(data))
+      .then((data: Skill[]) => setSkills(data))
       .finally(() => setLoading(false));
   }, []);
 
-  const data = {
-    labels: skills.map((s) => s.name),
-    datasets: [
-      {
-        label: "Skill Proficiency (%)",
-        data: skills.map((s) => s.proficiency),
-        backgroundColor: "rgba(59, 130, 246, 0.7)", // Tailwind blue-500
-      },
-    ],
-  };
-
   if (loading) {
-    return (
-      <div className="text-center mt-10 text-gray-600 dark:text-gray-300">
-        Loading skills...
-      </div>
-    );
+    return <p className="text-center text-gray-400">Loading skills...</p>;
   }
 
   return (
-    <div
-      className="
-        w-3/4 mx-auto mt-6 p-6
-        bg-white dark:bg-gray-900
-        text-black dark:text-white
-        rounded-lg shadow
-      "
+  <div className="px-6 py-12">
+    <SectionTitle
+      title="Skills"
+      subtitle="Technologies & tools I work with"
+    />
+
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.12
+          }
+        }
+      }}
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8"
     >
-      <h2 className="text-2xl font-bold text-center mb-6">
-        Skills Dashboard
-      </h2>
-
-      {skills.length === 0 ? (
-        <p className="text-center text-gray-500 dark:text-gray-400">
-          No skills available
-        </p>
-      ) : (
-        <Bar data={data} />
-      )}
-    </div>
-  );
-};
-
+      {skills.map((skill) => (
+        <motion.div
+          key={skill.id}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 }
+          }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        >
+          <SkillCard skill={skill} />
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+);
+}
 export default SkillsDashboard;

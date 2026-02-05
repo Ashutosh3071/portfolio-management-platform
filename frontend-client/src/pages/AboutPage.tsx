@@ -1,68 +1,75 @@
-import React from "react";
+import SectionTitle from "../components/common/SectionTitle";
+import FocusCard from "../components/common/FocusCard";
+import TimelineItem from "../components/common/TimelineItem";
 
-const AboutPage: React.FC = () => {
+const AboutPage = () => {
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <div className="max-w-5xl mx-auto px-6 space-y-10">
+    <div className="max-w-5xl mx-auto mt-16 px-4">
 
-        {/* ABOUT ME */}
-        <section className="bg-white p-6 rounded shadow">
-          <h1 className="text-2xl font-bold mb-4">About Me</h1>
-          <p className="text-gray-700 leading-relaxed">
-            I am an aspiring Full Stack Developer with hands-on experience in
-            building secure and scalable web applications using Spring Boot,
-            React, and modern frontend technologies. I enjoy solving real-world
-            problems and continuously improving my technical skills.
-          </p>
-        </section>
+      {/* INTRO */}
+      <section className="mb-20">
+        <SectionTitle
+          title="About Me"
+          subtitle="Who I am and what I do"
+        />
 
-        {/* EDUCATION */}
-        <section className="bg-white p-6 rounded shadow">
-          <h2 className="text-xl font-semibold mb-4">Education</h2>
-          <ul className="list-disc ml-6 text-gray-700">
-            <li>Bachelor’s Degree in Computer Science</li>
-            <li>Relevant coursework: Data Structures, DBMS, Web Technologies</li>
-          </ul>
-        </section>
+        <p className="text-gray-300 text-lg leading-relaxed text-center max-w-3xl mx-auto">
+          I’m a passionate full stack developer focused on building
+          scalable, secure, and maintainable web applications.
+          I enjoy solving real-world problems using clean architecture
+          and modern technologies.
+        </p>
+      </section>
 
-        {/* EXPERIENCE */}
-        <section className="bg-white p-6 rounded shadow">
-          <h2 className="text-xl font-semibold mb-4">Experience</h2>
-          <p className="text-gray-700">
-            Software Developer Intern — Worked on backend APIs, frontend
-            dashboards, authentication, and database integration using Spring
-            Boot and React.
-          </p>
-        </section>
+      {/* EDUCATION */}
+      <section className="mb-20">
+        <SectionTitle
+          title="Education"
+          subtitle="My academic journey"
+        />
 
-        {/* CAREER OBJECTIVE */}
-        <section className="bg-white p-6 rounded shadow">
-          <h2 className="text-xl font-semibold mb-4">Career Objective</h2>
-          <p className="text-gray-700">
-            To secure a challenging position as a Full Stack Developer where I
-            can apply my skills, learn continuously, and contribute to impactful
-            software solutions.
-          </p>
-        </section>
+        <div className="border-l border-slate-700 pl-6 space-y-10">
+          <TimelineItem
+            year="2022 – 2026"
+            title="B.Tech in Computer Science"
+            place="Your College / University Name"
+            description="Focused on software engineering, data structures,
+            operating systems, databases, and full stack development."
+          />
 
-        {/* TECHNOLOGIES */}
-        <section className="bg-white p-6 rounded shadow">
-          <h2 className="text-xl font-semibold mb-4">Technologies</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            {["Java", "Spring Boot", "React", "MySQL", "JWT", "Tailwind CSS"].map(
-              (tech) => (
-                <div
-                  key={tech}
-                  className="border rounded py-2 text-gray-700"
-                >
-                  {tech}
-                </div>
-              )
-            )}
-          </div>
-        </section>
+          <TimelineItem
+            year="2020 – 2022"
+            title="Higher Secondary (12th)"
+            place="Your School Name"
+            description="Science stream with focus on mathematics and computer science."
+          />
+        </div>
+      </section>
 
-      </div>
+      {/* EXPERIENCE / INTERESTS */}
+      <section className="mb-20">
+        <SectionTitle
+          title="What I Focus On"
+          subtitle="Skills & interests"
+        />
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <FocusCard
+            title="Backend Development"
+            text="Designing secure REST APIs, authentication systems,
+            and scalable server-side logic."
+          />
+          <FocusCard
+            title="Frontend Development"
+            text="Building responsive, accessible, and modern user interfaces."
+          />
+          <FocusCard
+            title="System Design"
+            text="Clean architecture, database design, and performance optimization."
+          />
+        </div>
+      </section>
+
     </div>
   );
 };

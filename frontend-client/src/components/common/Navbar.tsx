@@ -1,37 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="bg-blue-600 text-white px-6 py-4">
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">My Portfolio</h1>
+    <nav className="bg-slate-900 text-white px-6 py-4 flex justify-between items-center">
+      <h1 className="text-xl font-bold text-indigo-500">
+        My Portfolio
+      </h1>
 
-        <div className="space-x-6">
-          <NavLink to="/" className="hover:underline">
-            Home
-          </NavLink>
-          <NavLink to="/about" className="hover:underline">
-            About
-          </NavLink>
-          <NavLink to="/skills" className="hover:underline">
-            Skills
-          </NavLink>
-          <NavLink to="/projects" className="hover:underline">
-            Projects
-          </NavLink>
-          <NavLink to="/contact" className="hover:underline">
-            Contact
-          </NavLink>
-          <NavLink to="/chat" className="hover:underline">
-  Chat
-</NavLink>
-
-<NavLink to="/analytics" className="hover:underline">
-  Analytics
-</NavLink>
-
-        </div>
-      </div>
+      <ul className="flex gap-6">
+        <li><Link to="/" className="hover:text-indigo-400">Home</Link></li>
+        <li><Link to="/about" className="hover:text-indigo-400">About</Link></li>
+        <li><Link to="/skills" className="hover:text-indigo-400">Skills</Link></li>
+        <li><Link to="/projects" className="hover:text-indigo-400">Projects</Link></li>
+        <li><Link to="/chat" className="hover:text-indigo-400">Chat</Link></li>
+        <li><Link to="/analytics" className="hover:text-indigo-400">Analytics</Link></li>
+      </ul>
     </nav>
   );
 };

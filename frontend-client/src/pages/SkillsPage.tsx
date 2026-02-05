@@ -1,67 +1,43 @@
-import React from "react";
-import SkillsDashboard from "../components/skills/SkillsDashboard";
+import SkillsSection from "../components/skills/SkillsSection";
+import SectionTitle from "../components/common/SectionTitle";
+import { Skill } from "../types/Skill";
 
-const SkillsPage: React.FC = () => {
+const skills: Skill[] = [
+  { id: 1, name: "React", category: "Frontend", level: 90 },
+  { id: 2, name: "TypeScript", category: "Frontend", level: 85 },
+  { id: 3, name: "Tailwind CSS", category: "Frontend", level: 88 },
+
+  { id: 4, name: "Java", category: "Backend", level: 85 },
+  { id: 5, name: "Spring Boot", category: "Backend", level: 80 },
+  { id: 6, name: "MySQL", category: "Backend", level: 78 },
+
+  { id: 7, name: "Git", category: "Tools", level: 75 },
+  { id: 8, name: "Docker", category: "Tools", level: 65 },
+  { id: 9, name: "Postman", category: "Tools", level: 80 }
+];
+
+const SkillsPage = () => {
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <div className="max-w-6xl mx-auto px-6 space-y-10">
+    <div className="max-w-7xl mx-auto px-6 py-16">
+      <SectionTitle
+        title="Technical Skills"
+        subtitle="Technologies I use to build scalable and modern applications"
+      />
 
-        {/* PAGE HEADER */}
-        <section className="text-center">
-          <h1 className="text-3xl font-bold">Skills</h1>
-          <p className="text-gray-600 mt-2">
-            Overview of my technical skills and proficiency levels
-          </p>
-        </section>
+      <SkillsSection
+        title="Frontend Development"
+        skills={skills.filter(s => s.category === "Frontend")}
+      />
 
-        {/* SKILLS DASHBOARD (CHART) */}
-        <section className="bg-white p-6 rounded shadow">
-          <h2 className="text-xl font-semibold mb-4 text-center">
-            Skill Proficiency
-          </h2>
-          <SkillsDashboard />
-        </section>
+      <SkillsSection
+        title="Backend Development"
+        skills={skills.filter(s => s.category === "Backend")}
+      />
 
-        {/* SKILL CATEGORIES */}
-        <section className="bg-white p-6 rounded shadow">
-          <h2 className="text-xl font-semibold mb-4">
-            Skill Categories
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div>
-              <h3 className="font-semibold mb-2">Backend</h3>
-              <ul className="list-disc ml-5 text-gray-700">
-                <li>Java</li>
-                <li>Spring Boot</li>
-                <li>REST APIs</li>
-                <li>JWT Security</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-2">Frontend</h3>
-              <ul className="list-disc ml-5 text-gray-700">
-                <li>React</li>
-                <li>TypeScript</li>
-                <li>Tailwind CSS</li>
-                <li>HTML & CSS</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-2">Tools & Database</h3>
-              <ul className="list-disc ml-5 text-gray-700">
-                <li>MySQL</li>
-                <li>Git & GitHub</li>
-                <li>Postman</li>
-                <li>Maven</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-      </div>
+      <SkillsSection
+        title="Tools & Platforms"
+        skills={skills.filter(s => s.category === "Tools")}
+      />
     </div>
   );
 };
