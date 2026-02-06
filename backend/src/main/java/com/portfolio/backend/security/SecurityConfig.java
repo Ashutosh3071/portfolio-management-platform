@@ -29,14 +29,20 @@ public class SecurityConfig {
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/admin/login").permitAll()
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/chat/**").permitAll()
-                .requestMatchers("/api/analytics/**").permitAll()
-                .requestMatchers("/api/skills/**").permitAll()
-                .requestMatchers("/api/projects/**").permitAll()
-                .anyRequest().authenticated()
-            )
+    .requestMatchers(
+        "/",
+        "/index.html",
+        "/client/**",
+        "/admin/**",
+        "/assets/**",
+        "/favicon.ico"
+    ).permitAll()
+
+    .requestMatchers("/api/admin/login").permitAll()
+    .requestMatchers("/api/**").authenticated()
+    .anyRequest().permitAll()
+)
+
             .addFilterBefore(
                 jwtAuthenticationFilter,
                 UsernamePasswordAuthenticationFilter.class
